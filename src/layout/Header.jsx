@@ -3,7 +3,7 @@ function Header(props){
         <div>
             <nav className="header">
                 <div className="header__container">
-                    <a className="header__brand nav-link active" href="#">Movies</a>
+                    <a className="header__brand nav-link active" href="#">Game Store</a>
                     <form className="header__form" role="search">
                     </form>
                 </div>

@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {API_KEY, API_URL} from '../config';
 
+import {Preloader} from './Preloader';
+import {ProductsList} from './ProductsList';
+
 function Shop(){
 
     const [products, setProducts] = useState([]);
@@ -10,11 +13,12 @@ function Shop(){
     useEffect(()=>{
         fetch(API_URL, {
             headers:{ 
-                'Authorization': API_KEY,
+                Authorization: API_KEY,
             },
         })
         .then(resp => resp.json())
         .then((data) => {
+            console.log(data.shop);
             data.shop && setProducts(data.shop);
             setLoading(false);
         })
@@ -23,7 +27,7 @@ function Shop(){
     return(
         <main className="container content">
 
-            Shop
+            {loading? <Preloader/>: <ProductsList products = {products}/>} 
 
         </main>
     )
