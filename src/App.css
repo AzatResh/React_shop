@@ -76,6 +76,26 @@
 	cursor: pointer;
 }
 
+.alert{
+	position: fixed;
+	display: inline-block;
+	top: 4rem;
+	right: 6.5rem;
+	z-index: 8;
+	animation: alert 250ms ease-in-out;
+}
+
+@keyframes alert{
+	from{
+		opacity: 0;
+		transform: translateY(2rem);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+}
+
 @keyframes show{
 	from{
 		top: 60%;

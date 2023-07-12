@@ -5,6 +5,7 @@ import {Preloader} from './Preloader';
 import {ProductsList} from './ProductsList';
 import {Cart} from './Cart';
 import {BasketList} from './BasketList'
+import {Alert} from './alert'
 
 function Shop(){
 
@@ -12,6 +13,7 @@ function Shop(){
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isBasketShow, setBasketShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     const handleBasketShow = () =>{
         setBasketShow(!isBasketShow);
@@ -39,6 +41,7 @@ function Shop(){
             });
             setOrder(newOrder);
         }   
+        setAlertName(item.displayName);
     }
     
     const removeFromBasket = (id) =>{
@@ -76,6 +79,10 @@ function Shop(){
         setOrder(newOrder);
     }
 
+    const closeAlert = () =>{
+        setAlertName('');
+    }
+
     // get Products from api
     useEffect(()=>{
         fetch(API_URL, {
@@ -99,6 +106,9 @@ function Shop(){
                                         removeFromBasket={removeFromBasket}
                                         incQuantity={incQuantity}
                                         decQuantity={decQuantity}/>}
+            {
+                alertName && <Alert name = {alertName} closeAlert = {closeAlert}/>
+            }
             {loading? <Preloader/>: <ProductsList products = {products} addToBasker ={addToBasker}/>} 
             
         </main>
