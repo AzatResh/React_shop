@@ -10,7 +10,7 @@ function Product(props){
                 </div>
                 <hr />
                 <div className="d-flex flex-row align-self-center justify-content-between">
-                    <a href="#" className="btn btn-primary" onClick={()=>{addToBasker({ mainId, displayName, price })}}>Купить</a>
+                    <a className="btn btn-primary" onClick={()=>{addToBasker({ mainId, displayName, price })}}>Купить</a>
                     <div className="align-self-center">
                         <p className="m-0 me-1 fs-4">{price.regularPrice} руб.</p>
                     </div>
