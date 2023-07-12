@@ -4,11 +4,18 @@ function Product(props){
         <div className="card">
             <img src={displayAssets[0].full_background} className="card-img-top" alt="images"/>
             <div className="card-body">
+                <div className="card-container h-50">
                 <h5 className="card-title">{displayName}</h5>
                 <p className="card-text">{displayDescription}</p>
-                <p className="card-text">{price.regularPrice}</p>
+                </div>
                 <hr />
-                <a href="#" className="btn btn-primary">Купить</a>
+                <div className="d-flex flex-row align-self-center justify-content-between">
+                    <a href="#" className="btn btn-primary">Купить</a>
+                    <div className="align-self-center">
+                        <p className="m-0 me-1 fs-4">{price.regularPrice} руб.</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     );

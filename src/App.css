@@ -31,3 +31,20 @@
     gap: 1rem;
     padding: 0px 10px 20px 10px;
   }
+
+.cart{
+	position: fixed;
+	right: 2rem;
+	bottom: 2rem;
+
+	cursor: pointer;
+	z-index: 2;
+	padding: .5rem;
+}
+
+@media (min-width: 767px) {
+	.cart{
+		bottom: unset;
+		top: 5rem;
+	}
+}
