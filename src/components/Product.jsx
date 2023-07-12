@@ -1,5 +1,5 @@
 function Product(props){
-    const {id, displayName, displayDescription, price, displayAssets} = props;
+    const {mainId, displayName, displayDescription, price, displayAssets, addToBasker = Function.prototype} = props;
     return(
         <div className="card">
             <img src={displayAssets[0].full_background} className="card-img-top" alt="images"/>
@@ -10,7 +10,7 @@ function Product(props){
                 </div>
                 <hr />
                 <div className="d-flex flex-row align-self-center justify-content-between">
-                    <a href="#" className="btn btn-primary">Купить</a>
+                    <a href="#" className="btn btn-primary" onClick={()=>{addToBasker({ mainId, displayName, price })}}>Купить</a>
                     <div className="align-self-center">
                         <p className="m-0 me-1 fs-4">{price.regularPrice} руб.</p>
                     </div>

@@ -1,7 +1,7 @@
 import {Product} from './Product';
 
 function ProductsList(props){
-    const {products = []} = props;
+    const {products = [], addToBasker = Function.prototype} = props;
 
     if(!products.length){
         return;
@@ -10,7 +10,7 @@ function ProductsList(props){
         <div className='products py-3'>
 
             {products.map((product) => (
-                <Product key = {product.id} {...product}/>
+                <Product key = {product.id} {...product} addToBasker={addToBasker}/>
             ))}
 
         </div>
