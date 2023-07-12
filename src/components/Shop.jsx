@@ -43,7 +43,36 @@ function Shop(){
     
     const removeFromBasket = (id) =>{
         const newOrder = order.filter((product)=>product.mainId !== id);
+        setOrder(newOrder);
+    }
 
+    const incQuantity = (id) =>{
+        const newOrder = order.map(orderItem => {
+            if(orderItem.mainId === id){
+                const newQuantity = orderItem.quantity+1;
+                return{
+                    ...orderItem,
+                    quantity: newQuantity
+                }
+            } else {
+                return orderItem;
+            }
+        });
+        setOrder(newOrder);
+    }
+
+    const decQuantity = (id) =>{
+        const newOrder = order.map(orderItem => {
+            if(orderItem.mainId === id){
+                const newQuantity = orderItem.quantity-1;
+                return{
+                    ...orderItem,
+                    quantity: newQuantity >= 0? newQuantity : 0
+                }
+            } else {
+                return orderItem;
+            }
+        });
         setOrder(newOrder);
     }
 
@@ -65,7 +94,11 @@ function Shop(){
         <main className="container content">
 
             <Cart quantity = {order.length} handleBasketShow={handleBasketShow}/> 
-            {isBasketShow && <BasketList order = {order} handleBasketShow ={handleBasketShow} removeFromBasket={removeFromBasket}/>}
+            {isBasketShow && <BasketList order = {order} 
+                                        handleBasketShow ={handleBasketShow} 
+                                        removeFromBasket={removeFromBasket}
+                                        incQuantity={incQuantity}
+                                        decQuantity={decQuantity}/>}
             {loading? <Preloader/>: <ProductsList products = {products} addToBasker ={addToBasker}/>} 
             
         </main>
