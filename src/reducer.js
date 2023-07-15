@@ -58,19 +58,27 @@ export function reducer(state, {type, payload}){
                 })
             }
         case 'DEC_QUANTITY':
+            let newQuantity = 0;
+            const orderItems = state.order.map(orderItem => {
+                if(orderItem.mainId === payload.id){
+                    newQuantity = orderItem.quantity-1;
+                    return{
+                        ...orderItem,
+                        quantity: newQuantity >= 0? newQuantity : 0
+                    }
+                } else {
+                    return orderItem;
+                }
+            }) 
             return{
                 ...state,
-                order: state.order.map(orderItem => {
-                    if(orderItem.mainId === payload.id){
-                        const newQuantity = orderItem.quantity-1;
-                        return{
-                            ...orderItem,
-                            quantity: newQuantity
-                        }
-                    } else {
-                        return orderItem;
-                    }
-                })
+                order: newQuantity > 0? orderItems: state.order.filter((product)=>product.mainId !== payload.id)
+            }
+        case 'SET_PRODUCTS':
+            return{
+                ...state,
+                products: payload || [],
+                loading: false
             }
         default:
             return state;

@@ -21,7 +21,7 @@ export const ContextProvider = ({children}) => {
     value.closeAlert = () =>{
         dispatch({type: 'CLOSE_ALERT'});
     }
-    value.addToBasker = (item) =>{
+    value.addToBasket = (item) =>{
         dispatch({type: 'ADD_TO_BASKET', payload: item});
     }
     value.removeFromBasket =(id)=>{
@@ -32,6 +32,9 @@ export const ContextProvider = ({children}) => {
     }
     value.decQuantity =(id)=>{
         dispatch({type: 'DEC_QUANTITY', payload: {id: id}});
+    }
+    value.setProducts = (data) =>{
+        dispatch({type: 'SET_PRODUCTS', payload: data});
     }
 
     return <ShopContext.Provider value = {value}>

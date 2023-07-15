@@ -1,13 +1,15 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
+
 function BasketItem(props){
     const {
         mainId, 
         displayName,
         price, 
-        quantity,
-        removeFromBasket = Function.prototype,
-        incQuantity = Function.prototype, 
-        decQuantity = Function.prototype
+        quantity
     } = props
+
+    const{ removeFromBasket, incQuantity, decQuantity} = useContext(ShopContext);
 
     return(
         <li className="list-group-item bg-light d-flex justify-content-between align-items-center"> {displayName} x {quantity} = {(price.regularPrice*quantity)}

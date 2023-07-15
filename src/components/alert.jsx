@@ -1,7 +1,8 @@
-import {useEffect} from "react";
+import {useEffect, useContext} from "react";
+import {ShopContext} from "../context";
 
-function Alert(props){
-    const {name, closeAlert = Function.prototype} = props;
+function Alert(){
+    const {closeAlert, alertName} = useContext(ShopContext);
 
     useEffect(()=>{
         const timerId = setTimeout(closeAlert, 3000);
@@ -9,11 +10,12 @@ function Alert(props){
         return(()=>{
             clearTimeout(timerId);
         })
-    }, [name]);
+        // eslint-disable-next-line
+    }, [alertName]);
 
     return(
         <div className="alert alert-dark" role="alert">
-            {name} добавлен в корзину.
+            {alertName} добавлен в корзину.
         </div>
     )
 }
