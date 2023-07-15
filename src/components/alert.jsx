@@ -12,7 +12,7 @@ function Alert(props){
     }, [name]);
 
     return(
-        <div class="alert alert-dark" role="alert">
+        <div className="alert alert-dark" role="alert">
             {name} добавлен в корзину.
         </div>
     )
